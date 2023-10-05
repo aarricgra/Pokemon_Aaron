@@ -12,6 +12,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.pokemon_aaron.databinding.FragmentFirstBinding;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -40,16 +41,18 @@ public class FirstFragment extends Fragment {
         pokemons.add("Charmander");
         pokemons.add("Chimpchar");
         pokemons.add("Piplup");
-        pokemons.add("Bidoof");
+        pokemons.add(String.valueOf(new PokeAPI().getPokemonsName()));
 
         ArrayAdapter adapter = new ArrayAdapter<>(
-                getContext(), // Context de l'Activity
-                R.layout.rows_pokemon, // Layout per a cadascun dels ítems del ListView
-                R.id.textNombre, // ID del TextView que contindrà el títol de la pel·lícula
+                getContext(),
+                R.layout.rows_pokemon,
+                R.id.textNombre,
                 pokemons
         );
 
         binding.listaPokemon.setAdapter(adapter);
+
+
     }
 
     @Override

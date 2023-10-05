@@ -1,6 +1,7 @@
 package com.example.pokemon_aaron;
 
 import android.net.Uri;
+import android.util.Log;
 
 import java.io.IOException;
 
@@ -10,17 +11,20 @@ public class PokeAPI {
     String getPokemonsName() {
         Uri builtUri = Uri.parse(BASE_URL)
                 .buildUpon()
-                .appendPath("name")
-                .appendQueryParameter("limit", "10")
+                .appendPath("pokemon")
                 .build();
         String url = builtUri.toString();
-
+        Log.d(null,url);
         return doCall(url);
     }
 
     private String doCall(String url) {
+        Log.d(null,"aaaa");
         try {
+            Log.d(null,"gay");
+
             String JsonResponse = HttpUtils.get(url);
+            Log.d(null,JsonResponse);
             return JsonResponse;
         } catch (IOException e) {
             e.printStackTrace();

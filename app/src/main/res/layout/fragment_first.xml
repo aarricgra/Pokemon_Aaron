@@ -12,11 +12,7 @@
         android:layout_height="match_parent"
         android:padding="16dp" >
 
-        <item
-            android:id="@+id/action_refresh"
-            android:orderInCategory="100"
-            android:title="Refresh"
-            app:showAsAction="never" />
+
         <ListView
             android:id="@+id/listaPokemon"
             android:layout_width="match_parent"
