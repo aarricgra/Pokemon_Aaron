@@ -19,10 +19,7 @@ public class PokeAPI {
     }
 
     private String doCall(String url) {
-        Log.d(null,"aaaa");
         try {
-            Log.d(null,"gay");
-
             String JsonResponse = HttpUtils.get(url);
             Log.d(null,JsonResponse);
             return JsonResponse;

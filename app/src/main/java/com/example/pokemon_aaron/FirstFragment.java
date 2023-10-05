@@ -41,7 +41,12 @@ public class FirstFragment extends Fragment {
         pokemons.add("Charmander");
         pokemons.add("Chimpchar");
         pokemons.add("Piplup");
-        pokemons.add(String.valueOf(new PokeAPI().getPokemonsName()));
+        pokemons.add("a");
+        try {
+            String a = new PokeAPI().getPokemonsName();
+        }catch (Exception e){
+
+        }
 
         ArrayAdapter adapter = new ArrayAdapter<>(
                 getContext(),
