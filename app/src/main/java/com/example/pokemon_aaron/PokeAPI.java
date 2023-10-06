@@ -20,7 +20,9 @@ public class PokeAPI {
 
     private String doCall(String url) {
         try {
+            Log.d(null,"aaa");
             String JsonResponse = HttpUtils.get(url);
+
             Log.d(null,JsonResponse);
             return JsonResponse;
         } catch (IOException e) {
