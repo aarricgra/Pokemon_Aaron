@@ -36,17 +36,8 @@ public class FirstFragment extends Fragment {
 
 
 
-        ArrayList<String> pokemons = new ArrayList<>();
-        pokemons.add("Pikachu");
-        pokemons.add("Charmander");
-        pokemons.add("Chimpchar");
-        pokemons.add("Piplup");
-        pokemons.add("a");
-        try {
-            String a = new PokeAPI().getPokemonsName();
-        }catch (Exception e){
+        ArrayList<Pokemon> pokemons =new PokeAPI().getPokemonsName();
 
-        }
 
         ArrayAdapter adapter = new ArrayAdapter<>(
                 getContext(),
