@@ -51,23 +51,10 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_refresh) {
-            refresh();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    void refresh() {
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-
-        executor.execute(() -> {
-            // Aquest codi s'executa en segon pla
-            PokeAPI api = new PokeAPI();
-            String result = api.getPokemonsName().toString();
-
-            Log.d("aaa", result);
-        });
     }
 
     @Override
