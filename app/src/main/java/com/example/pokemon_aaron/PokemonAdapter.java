@@ -5,9 +5,11 @@ import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 
+import java.util.List;
+
 public class PokemonAdapter extends ArrayAdapter<Pokemon> {
 
-    public PokemonAdapter(@NonNull Context context, int resource) {
-        super(context, resource);
+    public PokemonAdapter(Context context, int resource, List<Pokemon> object) {
+        super(context, resource, object);
     }
 }
