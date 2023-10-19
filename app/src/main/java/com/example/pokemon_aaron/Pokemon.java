@@ -2,7 +2,7 @@ package com.example.pokemon_aaron;
 
 public class Pokemon {
     private String name;
-    private String specie;
+    private int id;
     private int height;
     private int weight;
     private String image;
@@ -10,9 +10,9 @@ public class Pokemon {
     public Pokemon() {
     }
 
-    public Pokemon(String name, String specie, int height, int weight,String image) {
+    public Pokemon(String name, int id, int height, int weight,String image) {
         this.name = name;
-        this.specie = specie;
+        this.id = id;
         this.height = height;
         this.weight = weight;
         this.image = image;
@@ -26,12 +26,12 @@ public class Pokemon {
         this.name = name;
     }
 
-    public String getSpecie() {
-        return specie;
+    public int getId() {
+        return id;
     }
 
-    public void setSpecie(String specie) {
-        this.specie = specie;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getHeight() {
@@ -58,9 +58,10 @@ public class Pokemon {
     public String toString() {
         return "Pokemon{" +
                 "name='" + name + '\'' +
-                ", specie='" + specie + '\'' +
+                ", id='" + id + '\'' +
                 ", height=" + height +
                 ", weight=" + weight +
+                ", image=" + image +
                 '}';
     }
 }

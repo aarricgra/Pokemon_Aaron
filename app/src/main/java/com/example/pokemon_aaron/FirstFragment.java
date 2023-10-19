@@ -22,7 +22,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class FirstFragment extends Fragment {
-    ArrayAdapter adapter =null;
+    private PokemonAdapter adapter;
     private FragmentFirstBinding binding;
 
     @Override
@@ -39,17 +39,9 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        adapter = new PokemonAdapter(getContext(),R.layout.rows_pokemon,new ArrayList<Pokemon>());
 
-
-        ArrayList<Pokemon> pokemons =new PokeAPI().getPokemons();
-
-
-        ArrayAdapter adapter = new ArrayAdapter<>(
-                getContext(),
-                R.layout.rows_pokemon,
-                R.id.textNombre,
-                pokemons
-        );
+        refresh();
 
         binding.listaPokemon.setAdapter(adapter);
 
@@ -68,16 +60,16 @@ public class FirstFragment extends Fragment {
 
         executor.execute(() -> {
             PokeAPI api = new PokeAPI();
-            String result = api.getPokemons().toString();
+            ArrayList<Pokemon> lista = api.getPokemons();
 
             handler.post(() -> {
                 // Aquest codi s'executa en primer pla.
                 adapter.clear();
-                for (Pokemon pokemon : new PokeAPI().getPokemons()) {
+                for (Pokemon pokemon : lista) {
                     adapter.add(pokemon);
                 }
             });
-            Log.d("aaa", result);
+
         });
     }
 

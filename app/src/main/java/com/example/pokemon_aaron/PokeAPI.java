@@ -23,6 +23,7 @@ public class PokeAPI {
         Uri builtUri = Uri.parse(BASE_URL)
                 .buildUpon()
                 .appendPath("pokemon")
+                .appendQueryParameter("limit", "10")
                 .build();
             String url = builtUri.toString();
             return doCall(url);
@@ -30,6 +31,7 @@ public class PokeAPI {
 
     private ArrayList<Pokemon> doCall(String url) {
         try {
+            Log.d("aaa",url);
             return processJson(HttpUtils.get(url));
         } catch (IOException e) {
             e.printStackTrace();
@@ -48,10 +50,17 @@ public class PokeAPI {
                 Pokemon pokemon = new Pokemon();
                 pokemon.setName(jsonPokemon.getString("name"));
 
+                String info = HttpUtils.get(jsonPokemon.getString("url"));
+                JSONObject infoextra = new JSONObject(info);
+                pokemon.setHeight(infoextra.getInt("height"));
+                pokemon.setWeight(infoextra.getInt("weight"));
+                pokemon.setId(infoextra.getInt("id"));
+
+                pokemon.setImage(infoextra.getJSONObject("sprites").getString("front_default"));
 
                 pokemons.add(pokemon);
             }
-        } catch (JSONException e) {
+        } catch (Exception e) {
 
         }
         return pokemons;
