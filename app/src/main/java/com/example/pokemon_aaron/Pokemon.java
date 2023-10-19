@@ -5,15 +5,17 @@ public class Pokemon {
     private String specie;
     private int height;
     private int weight;
+    private String image;
 
     public Pokemon() {
     }
 
-    public Pokemon(String name, String specie, int height, int weight) {
+    public Pokemon(String name, String specie, int height, int weight,String image) {
         this.name = name;
         this.specie = specie;
         this.height = height;
         this.weight = weight;
+        this.image = image;
     }
 
     public String getName() {
@@ -47,6 +49,10 @@ public class Pokemon {
     public void setWeight(int weight) {
         this.weight = weight;
     }
+
+    public String getImage() {return image;}
+
+    public void setImage(String image) {this.image = image;}
 
     @Override
     public String toString() {
