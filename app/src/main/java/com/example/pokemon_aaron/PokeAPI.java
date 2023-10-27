@@ -54,7 +54,6 @@ public class PokeAPI {
                 JSONObject infoextra = new JSONObject(info);
                 pokemon.setHeight(infoextra.getInt("height"));
                 pokemon.setWeight(infoextra.getInt("weight"));
-                pokemon.setId(infoextra.getInt("id"));
 
                 pokemon.setImage(infoextra.getJSONObject("sprites").getString("front_default"));
 

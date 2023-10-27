@@ -1,8 +1,14 @@
 package com.example.pokemon_aaron;
 
-public class Pokemon {
-    private String name;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import java.io.Serializable;
+@Entity
+public class Pokemon  implements Serializable {
+    @PrimaryKey(autoGenerate = true)
     private int id;
+    private String name;
     private int height;
     private int weight;
     private String image;
@@ -10,9 +16,8 @@ public class Pokemon {
     public Pokemon() {
     }
 
-    public Pokemon(String name, int id, int height, int weight,String image) {
+    public Pokemon(String name, int height, int weight,String image) {
         this.name = name;
-        this.id = id;
         this.height = height;
         this.weight = weight;
         this.image = image;
