@@ -31,14 +31,10 @@ public class PokemonAdapter extends ArrayAdapter<Pokemon> {
         }
 
         TextView name = convertView.findViewById(R.id.name);
-        TextView height = convertView.findViewById(R.id.height);
-        TextView weight = convertView.findViewById(R.id.weight);
 
         ImageView image = convertView.findViewById(R.id.image);
 
         name.setText(pokemon.getName());
-        height.setText(String.valueOf(pokemon.getHeight()));
-        weight.setText(String.valueOf(pokemon.getWeight()));
         Picasso.get().load(pokemon.getImage()).into(image);
 
         return convertView;

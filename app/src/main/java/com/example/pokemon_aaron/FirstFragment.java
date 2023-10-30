@@ -39,6 +39,7 @@ public class FirstFragment extends Fragment {
     ) {
 
         binding = FragmentFirstBinding.inflate(inflater, container, false);
+        setHasOptionsMenu(true);
         return binding.getRoot();
 
 
@@ -51,6 +52,25 @@ public class FirstFragment extends Fragment {
 
         binding.listaPokemon.setAdapter(adapter);
 
+        binding.listaPokemon.setOnItemClickListener((adapterView, view1, i, l) -> {
+            Pokemon pokemon = (Pokemon) adapterView.getItemAtPosition(i);
+
+            Bundle datos = new Bundle();
+            datos.putSerializable("pokemon", pokemon);
+
+            if (!esTablet()){
+                NavHostFragment.findNavController(
+                this
+                ).navigate(R.id.action_FirstFragment_to_SecondFragment, datos);
+            } else {
+                NavHostFragment.findNavController(
+                        this
+                ).navigate(R.id.action_SecondFragment_to_Self, datos);
+
+            }
+
+        });
+
         model = new ViewModelProvider(this).get(PokemonViewModel.class);
 
         model.getPokemons().observe(
@@ -62,8 +82,12 @@ public class FirstFragment extends Fragment {
 
         //quitar al poner el puto menu
 
-        model.refresh();
 
+
+    }
+
+    private boolean esTablet() {
+        return getResources().getBoolean(R.bool.delao);
     }
 
     @Override

@@ -48,7 +48,9 @@ public class PokeAPI {
                 JSONObject jsonPokemon = jsonPokemons.getJSONObject(i);
 
                 Pokemon pokemon = new Pokemon();
-                pokemon.setName(jsonPokemon.getString("name"));
+                String name1 = jsonPokemon.getString("name");
+                String name2= name1.toUpperCase().charAt(0)+name1.substring(1,name1.length());
+                pokemon.setName(name2);
 
                 String info = HttpUtils.get(jsonPokemon.getString("url"));
                 JSONObject infoextra = new JSONObject(info);
